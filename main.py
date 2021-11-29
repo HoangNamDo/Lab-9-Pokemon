@@ -23,11 +23,11 @@ def display_by_name_type_and_generation(pokemon):
 def display_by_name_hp_attack_defense_and_speed(pokemon):
     print(pokemon[["Name", "HP", "Attack", "Defense", "Speed"]])
 
-def display_dataframe_of_only_grass_type(pokemon):
-    # this function displays only GRASS type, no matter Type 1 GRASS or Type 2 GRASS
+def display_dataframe_of_grass_type(pokemon):
+    # this function displays GRASS type pokemon, could be Type 1 GRASS or Type 2 GRASS
     grass_type_pokemon = pokemon[(pokemon["Type 1"] == "Grass")|(pokemon["Type 2"] == "Grass")]
     frame_grass_type_pokemon = pd.DataFrame(grass_type_pokemon)
-    print(frame_grass_type_pokemon[["Name", "Type 1", "Type 2"]])
+    print(frame_grass_type_pokemon[["Name", "Type 1", "Type 2", "HP", "Attack", "Defense", "Speed", "Legendary"]])
 
 def display_dataframe_of_highest_to_lowest_hp(pokemon):
     highest_to_lowest_hp_pokemon = pokemon.sort_values("HP", ascending=False)
@@ -47,7 +47,7 @@ def display_dataframe_of_only_legendary(pokemon):
 def search_by_name(pokemon):
     try:
         while True:
-            _continue = input("Press any key to continue. Press e to exit. ")
+            _continue = input("Please press any key to continue or press M to go back to main menu. ")
             print()
 
             if _continue.lower() != "e":
@@ -83,8 +83,8 @@ def main():
         elif command == "2":
             display_by_name_hp_attack_defense_and_speed(pokemon)
         elif command == "3":
-            # display only GRASS type, no matter Type 1 GRASS or Type 2 GRASS
-            display_dataframe_of_only_grass_type(pokemon)
+            # display GRASS type pokemon, could be Type 1 GRASS or Type 2 GRASS
+            display_dataframe_of_grass_type(pokemon)
         elif command == "4":
             display_dataframe_of_highest_to_lowest_hp(pokemon)
         elif command == "5":
