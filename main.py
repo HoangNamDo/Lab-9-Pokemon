@@ -8,13 +8,13 @@ import pandas as pd
 def display_menu():
     print()
     print("* * * * * * * COMMAND MENU * * * * * * *")
-    print("1 - Display Pokemons by Name, Type, Generation")
-    print("2 - Display Name, HP, Attack, Defense, Speed")
+    print("1 - Display all of the Pokemon by Name, Type, Generation")
+    print("2 - Display all of the Pokemon by Name, HP, Attack, Defense, Speed")
     print("3 - Display all of the GRASS type Pokemon")
     print("4 - Display all of the Pokemon in order of HP (highest to lowest)")
     print("5 - Display all of the Pokemon in order of NAME A-Z")
-    print("6 - all the LEGENDARY Pokemon")
-    print("7 - all the LEGENDARY Pokemon")
+    print("6 - Display all of the LEGENDARY Pokemon")
+    print("7 - Search the Pokemon by Name and Display the Associated Data")
 
 def display_by_name_type_and_generation(pokemon):
     print(pokemon[["Name", "Type 1", "Type 2", "Generation"]])
@@ -48,7 +48,7 @@ def search_by_name_and_display(pokemon):
     associated_data = pokemon[pokemon["Name"] == search_value]
     frame_associated_data = pd.DataFrame(associated_data)
     print(frame_associated_data)
-
+# Name,Type 1,Type 2,Total,HP,Attack,Defense,Sp. Atk,Sp. Def,Speed,Generation,Legendary
 def main():
     # print("Welcome to MCU Superheroes Database")
     # save data to a variable "pokemon"
