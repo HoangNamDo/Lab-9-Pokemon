@@ -37,47 +37,58 @@ def display_menu():
 def display_name_type_generation(pokemon):
     print(pokemon[["Name", "Type 1", "Type 2", "Generation"]])
 
+def display_name_hp_attack_defense_speed(pokemon):
+    print(pokemon[["Name", "HP", "Attack", "Defense", "Speed"]])
+
+def display_grass_type_pokemon_dataframe(pokemon):
+    # fram = 
+    # print(fram)
+    grass_type_pokemon = pokemon[pokemon["Type 1"] == "Grass"]
+    grass_type_pokemon_frame = pd.DataFrame(grass_type_pokemon)
+    # print(pokemon[["Name", "HP", "Attack", "Defense", "Speed"]])
+    print(grass_type_pokemon_frame)
+
 def main():
-    print("Welcome to MCU Superheroes Database")
+    # print("Welcome to MCU Superheroes Database")
     # then save data to a variable "pokemon"
     pokemon = pd.read_csv("pokemon.csv")
 
     ## EXAMPLE DATA CALLS - COMMENT OR REMOVE lines 7 - 25 BEFORE SUBMITTING
 
-    # print first 5 records
-    print()
-    print("Top 5 records\n")
-    print(pokemon.head(5))
+    # # print first 5 records
+    # print()
+    # print("Top 5 records\n")
+    # print(pokemon.head(5))
 
-    # print information about csv data
-    print()
-    print("Basic information about the Pokemon data\n")
-    print(pokemon.info())
+    # # print information about csv data
+    # print()
+    # print("Basic information about the Pokemon data\n")
+    # print(pokemon.info())
 
-    # print statistical information about all records in the data file
-    print()
-    print("Basic statistical information about the Pokemon data\n")
-    print(pokemon.describe())
+    # # print statistical information about all records in the data file
+    # print()
+    # print("Basic statistical information about the Pokemon data\n")
+    # print(pokemon.describe())
 
-    # print the minimum value of HP column - note this should align with the data in the describe() function
-    print("The minimum HP value is", pokemon["HP"].min())
+    # # print the minimum value of HP column - note this should align with the data in the describe() function
+    # print("The minimum HP value is", pokemon["HP"].min())
     while True:
         display_menu()
         print()
         command = input("Command: ")
         print()
         if command == "1":
-            list_name_and_alias(conn, cursor)
+            display_name_type_generation(pokemon)
         elif command == "2":
-            list_species_and_citizenship(conn, cursor)
+            display_name_hp_attack_defense_speed(pokemon)
         elif command == "3":
-            list_birth_year_and_status(conn, cursor)
-        elif command == "4":
-            list_portrayed_by(conn, cursor)
-        elif command == "5":
-            cursor = add_new_superhero(conn, cursor)
-        elif command == "6":
-            break
+            display_grass_type_pokemon_dataframe(pokemon)
+        # elif command == "4":
+        #     list_portrayed_by(conn, cursor)
+        # elif command == "5":
+        #     cursor = add_new_superhero(conn, cursor)
+        # elif command == "6":
+        #     break
         else:
             print("Unknown command. Please try again.")
 
