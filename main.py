@@ -23,9 +23,8 @@ def display_name_hp_attack_defense_speed(pokemon):
     print(pokemon[["Name", "HP", "Attack", "Defense", "Speed"]])
 
 def display_dataframe_grass_type_pokemon(pokemon):
-    grass_type_pokemon = pokemon[pokemon["Type 1"] == "Grass"]
+    grass_type_pokemon = pokemon[(pokemon["Type 1"] == "Grass")|(pokemon["Type 2"] == "Grass")]
     frame_grass_type_pokemon = pd.DataFrame(grass_type_pokemon)
-    # print(pokemon[["Name", "HP", "Attack", "Defense", "Speed"]])
     print(frame_grass_type_pokemon[["Name", "Type 1", "Type 2"]])
 
 def display_dataframe_pokemon_hp_highest_to_lowest(pokemon):
