@@ -60,18 +60,18 @@ def main():
         command = input("Command: ")
         print()
         if command == "1":
-            display_name_type_and_generation(pokemon)
+            display_by_name_type_and_generation(pokemon)
         elif command == "2":
-            display_name_hp_attack_defense_and_speed(pokemon)
+            display_by_name_hp_attack_defense_and_speed(pokemon)
         elif command == "3":
             # display only GRASS type, yet no matter Type 1 GRASS or Type 2 GRASS
-            display_dataframe_only_grass_type(pokemon)
+            display_dataframe_of_only_grass_type(pokemon)
         elif command == "4":
-            display_dataframe_hp_highest_to_lowest(pokemon)
+            display_dataframe_of_highest_to_lowest_hp(pokemon)
         elif command == "5":
-            display_dataframe_name_in_ascending_order(pokemon)
+            display_dataframe_of_name_in_ascending_order(pokemon)
         elif command == "6":
-            display_dataframe_only_legendary(pokemon)
+            display_dataframe_of_only_legendary(pokemon)
         elif command == "7":
             break
         else:
