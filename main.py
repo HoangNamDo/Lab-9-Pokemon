@@ -47,7 +47,7 @@ def display_dataframe_of_only_legendary(pokemon):
 def search_by_name(pokemon):
     try:
         while True:
-            _continue = input("Press any key to continue.\Press e to exit. ")
+            _continue = input("Press any key to continue. Press e to exit. ")
             print()
 
             if _continue.lower() != "e":
@@ -56,14 +56,12 @@ def search_by_name(pokemon):
                 associated_data = pokemon[pokemon["Name"] == search_input]
                 frame_associated_data = pd.DataFrame(associated_data)
 
-                if frame_associated_data.shape[0] == 0:
-                    raise Exception("Sorry, record not found!")
-
-                print(frame_associated_data)
-                print()
-
-                # if there are zero row, then raise an exception
-
+                if frame_associated_data.shape[0] == 0: # if there are 0 rows
+                    print("Sorry, record not found. Please try again!\n")
+                else:
+                    print(f"Bravo! Here are all records for {search_input}:\n")
+                    print(frame_associated_data)
+                    print()
             else:
                 print("Thank you!")
                 break
