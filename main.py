@@ -7,15 +7,15 @@ import pandas as pd
 
 def display_menu():
     print()
-    print("* * * * * * * COMMAND MENU * * * * * * *")
+    print("* * * * * * * MAIN MENU * * * * * * *")
     print("1 - Display all of the Pokemon by Name, Type, Generation")
     print("2 - Display all of the Pokemon by Name, HP, Attack, Defense, Speed")
-    print("3 - Display only the GRASS type Pokemon")
+    print("3 - Display all of the GRASS type Pokemon")
     print("4 - Display all of the Pokemon in order of HP (highest to lowest)")
     print("5 - Display all of the Pokemon in order of NAME A-Z")
-    print("6 - Display only the LEGENDARY Pokemon")
+    print("6 - Display all of the LEGENDARY Pokemon")
     print("7 - Search the Pokemon by Name")
-    print("8 - Exit the Program")
+    print("8 - Exit the program")
 
 def display_by_name_type_and_generation(pokemon):
     print(pokemon[["Name", "Type 1", "Type 2", "Generation"]])
@@ -24,22 +24,22 @@ def display_by_name_hp_attack_defense_and_speed(pokemon):
     print(pokemon[["Name", "HP", "Attack", "Defense", "Speed"]])
 
 def display_dataframe_of_grass_type(pokemon):
-    # this function displays GRASS type pokemon, could be Type 1 GRASS or Type 2 GRASS
+    # this function displays all GRASS type Pokemon, could be Type 1 GRASS or Type 2 GRASS
     grass_type_pokemon = pokemon[(pokemon["Type 1"] == "Grass")|(pokemon["Type 2"] == "Grass")]
     frame_grass_type_pokemon = pd.DataFrame(grass_type_pokemon)
     print(frame_grass_type_pokemon[["Name", "Type 1", "Type 2", "HP", "Attack", "Defense", "Speed", "Legendary"]])
 
-def display_dataframe_of_highest_to_lowest_hp(pokemon):
-    highest_to_lowest_hp_pokemon = pokemon.sort_values("HP", ascending=False)
-    frame_highest_to_lowest_hp_pokemon = pd.DataFrame(highest_to_lowest_hp_pokemon)
-    print(frame_highest_to_lowest_hp_pokemon[["Name", "HP", "Type 1", "Type 2", "Attack", "Defense", "Speed", "Legendary"]])
+def display_dataframe_of_hp_highest_to_lowest_order(pokemon):
+    hp_highest_to_lowest_order_pokemon = pokemon.sort_values("HP", ascending=False)
+    frame_hp_highest_to_lowest_order_pokemon = pd.DataFrame(hp_highest_to_lowest_order_pokemon)
+    print(frame_hp_highest_to_lowest_order_pokemon[["Name", "HP", "Type 1", "Type 2", "Total", "Attack", "Defense", "Sp. Atk", "Sp. Def", "Speed", "Generation", "Legendary"]])
 
-def display_dataframe_of_name_in_ascending_order(pokemon):
-    name_in_ascending_order_pokemon = pokemon.sort_values("Name")
-    frame_name_in_ascending_order_pokemon = pd.DataFrame(name_in_ascending_order_pokemon)
-    print(frame_name_in_ascending_order_pokemon)
+def display_dataframe_of_name_in_a_to_z_order(pokemon):
+    name_in_a_to_z_order_pokemon = pokemon.sort_values("Name")
+    frame_name_in_a_to_z_order_pokemon = pd.DataFrame(name_in_a_to_z_order_pokemon)
+    print(frame_name_in_a_to_z_order_pokemon[["Name", "Type 1", "Type 2", "Total", "HP", "Attack", "Defense", "Sp. Atk", "Sp. Def", "Speed", "Generation", "Legendary"]])
 
-def display_dataframe_of_only_legendary(pokemon):
+def display_dataframe_of_legendary(pokemon):
     legendary_pokemon = pokemon[pokemon["Legendary"] == True]
     frame_legendary_pokemon = pd.DataFrame(legendary_pokemon)
     print(frame_legendary_pokemon[["Name", "Legendary", "Type 1", "Type 2", "HP", "Attack", "Defense", "Speed"]])
@@ -47,10 +47,10 @@ def display_dataframe_of_only_legendary(pokemon):
 def search_by_name(pokemon):
     try:
         while True:
-            _continue = input("Please press any key to continue or press M to go back to main menu. ")
+            _continue = input("Press m to go back to main menu or press any other key to continue. ")
             print()
 
-            if _continue.lower() != "e":
+            if _continue.lower() != "m":
                 search_input = input("Input a Pokemon name: ")
                 print()
                 associated_data = pokemon[pokemon["Name"] == search_input]
@@ -86,11 +86,11 @@ def main():
             # display GRASS type pokemon, could be Type 1 GRASS or Type 2 GRASS
             display_dataframe_of_grass_type(pokemon)
         elif command == "4":
-            display_dataframe_of_highest_to_lowest_hp(pokemon)
+            display_dataframe_of_hp_highest_to_lowest_order(pokemon)
         elif command == "5":
-            display_dataframe_of_name_in_ascending_order(pokemon)
+            display_dataframe_of_name_in_a_to_z_order(pokemon)
         elif command == "6":
-            display_dataframe_of_only_legendary(pokemon)
+            display_dataframe_of_legendary(pokemon)
         elif command == "7":
             search_by_name(pokemon)
         elif command == "8":
